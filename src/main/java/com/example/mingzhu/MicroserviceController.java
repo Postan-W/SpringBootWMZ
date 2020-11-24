@@ -16,6 +16,7 @@ public class MicroserviceController {
         return requestName;
     }
     @RequestMapping(value = "/second", method = RequestMethod.GET)
+    //通过参数获取查询字符串
     public String getCreato(String requestName) {
         return requestName;
     }
