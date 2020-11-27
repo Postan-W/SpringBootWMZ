@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import sun.rmi.runtime.Log;
 
 import static java.lang.System.*;
 import java.util.logging.Logger;
@@ -18,7 +19,14 @@ public class MingzhuApplication {
         //创建spring容器
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
         Box box = (Box)context.getBean("aliasForBox");
+        //singleton模式下bean在容器创建的时候就被创建，并且始终只有一个
         Knife knife = (Knife)context.getBean("knife");
+        Knife knife2 = (Knife)context.getBean("knife");
+        out.print("获取的两个Knife引用指向同一个对象吗？");
+        out.println(knife == knife2);
+        Operator operator = (Operator)context.getBean("operator");
+        Logger.getGlobal().info(operator.getAxe().getToolName());
+        Logger.getGlobal().info(operator.getHammer().getToolName());
         out.println(String.format("length,width,height:%d,%d,%d",box.length,box.width,box.heigth));
         SpringApplication.run(MingzhuApplication.class, args);
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);

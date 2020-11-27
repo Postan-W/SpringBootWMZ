@@ -3,7 +3,6 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
     <!--bean就是java对象 , 由Spring创建和管理-->
     <!--spring首先就根据配置文件生成了每个对象，无论你之后用不用-->
     <!--
@@ -40,6 +39,12 @@ class是bean的全限定名=包名+类名
     <bean id="cook1" class="com.example.mingzhu.Cook1">
         <!--name的值是set函数名称后面的部分，首字母小写，ref是引入其他bean-->
         <property name="cooker" ref="knife"/>
+    </bean>
+    <bean id="axe" class="com.example.mingzhu.Axe"/>
+    <bean id="hammer" class="com.example.mingzhu.Hammer"/>
+    <!--自动装配-->
+    <bean id="operator" class="com.example.mingzhu.Operator" autowire="byName">
+        <property name="date" value="Friday"/>
     </bean>
     <!--
     数组注入：
