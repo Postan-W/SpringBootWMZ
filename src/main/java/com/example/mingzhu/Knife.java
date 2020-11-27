@@ -1,10 +1,14 @@
 package com.example.mingzhu;
 
+import sun.rmi.runtime.Log;
+
+import java.util.logging.Logger;
+
 public class Knife implements Cooker{
     public  String name;
 
     public Knife() {
-        System.out.println("看到这个说明spring使用了knife的无参构造函数");
+        Logger.getGlobal().info("看到这个说明spring使用了knife的无参构造函数");
     }
 
     public String getName() {
@@ -13,6 +17,7 @@ public class Knife implements Cooker{
 
     public void setName(String name) {
         this.name = name;
+        Logger.getGlobal().info("无参构造后spring调用了Knife的set方法为属性赋值");
     }
 
     @Override
