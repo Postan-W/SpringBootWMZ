@@ -21,4 +21,12 @@ public class AnnotationTest {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getName2() {
+        return name2;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

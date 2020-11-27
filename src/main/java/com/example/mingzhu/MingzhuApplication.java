@@ -20,8 +20,9 @@ public class MingzhuApplication {
         Box box = (Box)context.getBean("aliasForBox");
         ApplicationContext context2 = new FileSystemXmlApplicationContext("classpath:beans.xml");
         AnnotationTest annotationTest = (AnnotationTest) context2.getBean("anno");
-        Logger.getGlobal().info(annotationTest.name);
-        Logger.getGlobal().info(annotationTest.name2);
+        Logger.getGlobal().info(annotationTest.getName());
+        Logger.getGlobal().info(annotationTest.getName2());
+
         Logger.getGlobal().info(box.spoon.getTool());
         //singleton模式下bean在容器创建的时候就被创建，并且始终只有一个
         Knife knife = (Knife)context.getBean("knife");

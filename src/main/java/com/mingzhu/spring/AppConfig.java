@@ -3,6 +3,7 @@ package com.mingzhu.spring;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 //通过@Bean的方式将Bean注入到IoC容器中
+//代表这是一个配置类。这样就是通过纯Java方式配置bean
 @Configuration
 public class AppConfig {
     @Bean
@@ -12,6 +13,11 @@ public class AppConfig {
         user.setUserName("user1");
         user.setNote("note1");
         return user;
+    }
+    @Bean
+    public AnnotationTest initAnnotationTest(){
+        AnnotationTest annotationTest = new AnnotationTest();
+        return annotationTest;
     }
     @Bean
     public User2 initUser2(){
