@@ -19,6 +19,7 @@ class是bean的全限定名=包名+类名
     可以导入其他的配置文件
     <import resource="{path}/beans.xml"/>
     -->
+    <!--下面这些走的是无参构造函数-->
     <bean id="welcome" class="com.example.mingzhu.Welcome">
         <property name="name" value="  Spring"/>
     </bean>
@@ -29,11 +30,12 @@ class是bean的全限定名=包名+类名
         <property name="name" value="spoon"/>
     </bean>
     <bean id="cook1" class="com.example.mingzhu.Cook1">
-        <!--name的值是set函数名称后面的部分，首字母小写，ref是引入其他的bean-->
+        <!--name的值是set函数名称后面的部分，首字母小写，ref是引入其他bean-->
         <property name="cooker" ref="knife"/>
     </bean>
     <!--有构造函数的时=时候可以用constructor-arg标签，其中name的值可以按参数的位置如0，1，2来表示，也可以直接
     使用参数名称如length，也可以使用参数类型如Java.lang.String-->
+    <!--这种方式走的是有参构造函数-->
     <bean id="box" class="com.example.mingzhu.Box">
         <constructor-arg name="length" value="1"/>
         <constructor-arg name="heigth" value="2"/>

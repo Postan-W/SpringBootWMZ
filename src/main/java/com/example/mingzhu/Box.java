@@ -25,5 +25,6 @@ public class Box {
         this.length =length;
         this.width = width;
         this.heigth = heigth;
+        System.out.println("看到这个输出说明spring利用了Box的有参构造函数");
     }
 }

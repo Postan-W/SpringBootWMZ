@@ -15,8 +15,10 @@ import java.util.logging.Logger;
 public class MingzhuApplication {
     private static Logger log = Logger.getLogger(String.valueOf(MingzhuApplication.class));
     public static void main(String[] args) {
+        //创建spring容器
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
         Box box = (Box)context.getBean("aliasForBox");
+        Knife knife = (Knife)context.getBean("knife");
         out.println(String.format("length,width,height:%d,%d,%d",box.length,box.width,box.heigth));
         SpringApplication.run(MingzhuApplication.class, args);
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);

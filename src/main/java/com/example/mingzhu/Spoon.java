@@ -2,7 +2,6 @@ package com.example.mingzhu;
 
 public class Spoon implements Cooker{
     public String name;
-
     public String getName() {
         return name;
     }
