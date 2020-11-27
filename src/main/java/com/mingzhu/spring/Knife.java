@@ -1,6 +1,4 @@
-package com.example.mingzhu;
-
-import sun.rmi.runtime.Log;
+package com.mingzhu.spring;
 
 import java.util.logging.Logger;
 

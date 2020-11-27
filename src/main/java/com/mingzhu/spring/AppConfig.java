@@ -1,8 +1,6 @@
-package com.example.mingzhu;
+package com.mingzhu.spring;
 
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 //通过@Bean的方式将Bean注入到IoC容器中
 @Configuration

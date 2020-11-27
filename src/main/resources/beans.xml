@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context.xsd"
+       xmlns:context="http://www.springframework.org/schema/context">
+    <context:annotation-config/>
+    <context:annotation-config/>
+    <context:component-scan base-package="com.mingzhu.spring"/>
     <!--bean就是java对象 , 由Spring创建和管理-->
     <!--spring首先就根据配置文件生成了每个对象，无论你之后用不用-->
     <!--
@@ -26,26 +32,31 @@ class是bean的全限定名=包名+类名
 
 
     <!--下面这些注入走的是无参构造函数,然后再调用set函数把value值赋给属性name-->
-    <bean id="welcome" class="com.example.mingzhu.Welcome">
+    <bean id="welcome" class="com.mingzhu.spring.Welcome">
         <property name="name" value="  Spring"/>
     </bean>
-    <bean id="knife" class="com.example.mingzhu.Knife">
+    <bean id="knife" class="com.mingzhu.spring.Knife">
         <property name="name" value="knife"/>
     </bean>
-    <bean id="spoon" class="com.example.mingzhu.Spoon">
+
+    <bean id="spoon" class="com.mingzhu.spring.Spoon">
         <property name="name" value="spoon"/>
     </bean>
     <!--bean注入-->
-    <bean id="cook1" class="com.example.mingzhu.Cook1">
+    <bean id="cook1" class="com.mingzhu.spring.Cook1">
         <!--name的值是set函数名称后面的部分，首字母小写，ref是引入其他bean-->
         <property name="cooker" ref="knife"/>
     </bean>
-    <bean id="axe" class="com.example.mingzhu.Axe"/>
-    <bean id="hammer" class="com.example.mingzhu.Hammer"/>
-    <!--自动装配-->
-    <bean id="operator" class="com.example.mingzhu.Operator" autowire="byName">
+    <bean id="axe2" class="com.mingzhu.spring.Axe"/>
+    <bean id="axe" class="com.mingzhu.spring.Axe"/>
+    <bean id="hammer" class="com.mingzhu.spring.Hammer"/>
+    <!--自动装配,如果使用byType需要该类型的对象唯一，不然出错
+       <bean id="operator" class="com.mingzhu.spring.Operator" autowire="byName">
         <property name="date" value="Friday"/>
     </bean>
+    -->
+    <!--下面使用注解装配-->
+    <bean id="operator" class="com.mingzhu.spring.Operator"/>
     <!--
     数组注入：
     <bean id="student" class="com.kuang.pojo.Student">
@@ -105,10 +116,11 @@ class是bean的全限定名=包名+类名
     <!--有参构造函数的时=时候可以用constructor-arg标签，其中name的值可以按参数的位置如0，1，2来表示，也可以直接
     使用参数名称如length，也可以使用参数类型如Java.lang.String-->
     <!--这种方式走的是有参构造函数，不调用set-->
-    <bean id="box" class="com.example.mingzhu.Box">
+    <bean id="box" class="com.mingzhu.spring.Box">
         <constructor-arg name="length" value="1"/>
         <constructor-arg name="heigth" value="2"/>
         <constructor-arg name="width"  value="3"/>
+        <constructor-arg name="spoon" ref="spoon"/>
     </bean>
     <!--
     有参构造还有一种注入叫C注入

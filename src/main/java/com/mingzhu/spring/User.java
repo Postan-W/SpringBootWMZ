@@ -1,4 +1,4 @@
-package com.example.mingzhu;
+package com.mingzhu.spring;
 
 import lombok.Data;
 import lombok.Value;

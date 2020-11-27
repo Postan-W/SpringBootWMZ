@@ -1,6 +1,8 @@
-package com.example.mingzhu;
+package com.mingzhu.spring;
 
-public class Spoon implements Cooker{
+import com.mingzhu.spring.Cooker;
+
+public class Spoon implements Cooker {
     public String name;
     public String getName() {
         return name;

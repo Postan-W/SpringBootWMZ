@@ -1,4 +1,4 @@
-package com.example.mingzhu;
+package com.mingzhu.spring;
 import static java.lang.System.*;
 public class Welcome {
     private String name;

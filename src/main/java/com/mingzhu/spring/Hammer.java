@@ -1,4 +1,4 @@
-package com.example.mingzhu;
+package com.mingzhu.spring;
 
 public class Hammer implements Tools {
     @Override
