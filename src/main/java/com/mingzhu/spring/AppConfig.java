@@ -17,6 +17,8 @@ public class AppConfig {
     @Bean
     public AnnotationTest initAnnotationTest(){
         AnnotationTest annotationTest = new AnnotationTest();
+        annotationTest.setName("第一个名字");
+        annotationTest.setName2("第二个名字");
         return annotationTest;
     }
     @Bean

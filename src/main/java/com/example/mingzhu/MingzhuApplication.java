@@ -18,12 +18,6 @@ public class MingzhuApplication {
         //创建spring容器
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
         Box box = (Box)context.getBean("aliasForBox");
-        ApplicationContext context2 = new FileSystemXmlApplicationContext("classpath:beans.xml");
-        AnnotationTest annotationTest = (AnnotationTest) context2.getBean("anno");
-        Logger.getGlobal().info(annotationTest.getName());
-        Logger.getGlobal().info(annotationTest.getName2());
-
-        Logger.getGlobal().info(box.spoon.getTool());
         //singleton模式下bean在容器创建的时候就被创建，并且始终只有一个
         Knife knife = (Knife)context.getBean("knife");
         Knife knife2 = (Knife)context.getBean("knife");
@@ -39,8 +33,9 @@ public class MingzhuApplication {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         User user = ctx.getBean(User.class);
         User2 user2 = ctx.getBean(User2.class);
-        log.info(user.getId());
-        log.info(user2.getId());
+        AnnotationTest annotationTest1 = ctx.getBean(AnnotationTest.class);
+        Logger.getGlobal().info(annotationTest1.getName2());
+        Logger.getGlobal().info(annotationTest1.getName());
         out.println("服务正确启动");
     }
 }
