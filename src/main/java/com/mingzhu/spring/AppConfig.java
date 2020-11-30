@@ -16,6 +16,11 @@ public class AppConfig {
         return user;
     }
     @Bean
+    public Clothes initClothes(){
+        Clothes clothes = new Clothes("ZARA","slim fit pants","black",31);
+        return clothes;
+    }
+    @Bean
     public AnnotationTest initAnnotationTest(){
         AnnotationTest annotationTest = new AnnotationTest();
         annotationTest.setName("第一个名字");

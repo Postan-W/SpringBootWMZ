@@ -1,6 +1,9 @@
 package com.example.mingzhu;
 
+import ch.qos.logback.core.db.dialect.MySQLDialect;
 import com.mingzhu.spring.*;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -12,11 +15,17 @@ import static java.lang.System.*;
 import java.util.logging.Logger;
 
 @SpringBootApplication
+@MapperScan("com.mingzhu.spring")//如果不加则默认在当前包内找mapper
 public class MingzhuApplication {
     private static Logger log = Logger.getLogger(String.valueOf(MingzhuApplication.class));
     public static void main(String[] args) {
         //创建spring容器
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        Clothes clothes = ctx.getBean(Clothes.class);
+        Logger.getGlobal().info(String.format("名称：%s//n 款式:%s//n颜色：%s//n,尺寸:%s",clothes.name,clothes.style,clothes.color,
+                clothes.size));
+       //this.mybatis.insertIntoClothes();
         Box box = (Box)context.getBean("aliasForBox");
         //singleton模式下bean在容器创建的时候就被创建，并且始终只有一个
         Knife knife = (Knife)context.getBean("knife");
@@ -30,7 +39,6 @@ public class MingzhuApplication {
         Logger.getGlobal().info(operator.getDate());
         out.println(String.format("length,width,height:%d,%d,%d",box.length,box.width,box.heigth));
         SpringApplication.run(MingzhuApplication.class, args);
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         User user = ctx.getBean(User.class);
         User2 user2 = ctx.getBean(User2.class);
         AnnotationTest annotationTest1 = ctx.getBean(AnnotationTest.class);
