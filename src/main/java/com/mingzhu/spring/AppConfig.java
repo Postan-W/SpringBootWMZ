@@ -1,6 +1,7 @@
 package com.mingzhu.spring;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 //通过@Bean的方式将Bean注入到IoC容器中
 //代表这是一个配置类。这样就是通过纯Java方式配置bean
