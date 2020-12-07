@@ -19,8 +19,9 @@ import java.util.logging.Logger;
 public class MingzhuApplication {
     private static Logger log = Logger.getLogger(String.valueOf(MingzhuApplication.class));
     public static void main(String[] args) {
-        //创建spring容器
+        //这里去找xml配置的bean
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+        //这里找到纯Java配置类
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         Clothes clothes = ctx.getBean(Clothes.class);
         Logger.getGlobal().info(String.format("名称：%s//n 款式:%s//n颜色：%s//n,尺寸:%s",clothes.name,clothes.style,clothes.color,
