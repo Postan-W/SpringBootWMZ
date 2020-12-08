@@ -12,13 +12,21 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import static java.lang.System.*;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
 @SpringBootApplication
 @MapperScan("com.mingzhu.spring")//如果不加则默认在当前包内找mapper
 public class MingzhuApplication {
     private static Logger log = Logger.getLogger(String.valueOf(MingzhuApplication.class));
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+
+        SocketToPython socketToPython = new SocketToPython();
+        socketToPython.remoteCall();
         //这里去找xml配置的bean
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
         //这里找到纯Java配置类
