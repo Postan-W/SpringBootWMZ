@@ -2,6 +2,7 @@ package com.example.mingzhu;
 
 import ch.qos.logback.core.db.dialect.MySQLDialect;
 import com.mingzhu.spring.*;
+import org.json.JSONException;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -22,7 +23,7 @@ import java.util.logging.Logger;
 @MapperScan("com.mingzhu.spring")//如果不加则默认在当前包内找mapper
 public class MingzhuApplication {
     private static Logger log = Logger.getLogger(String.valueOf(MingzhuApplication.class));
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, JSONException {
 
 
         SocketToPython socketToPython = new SocketToPython();
