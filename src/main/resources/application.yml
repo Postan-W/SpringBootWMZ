@@ -1,6 +1,6 @@
 server:
   port: 8080
-
+  address: 140.210.92.100
 spring:
   datasource:
     username: root

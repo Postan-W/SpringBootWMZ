@@ -21,8 +21,7 @@ public class SocketToPython {
         jsonObject.put("id","1");
         jsonObject.put("name","张三");
         jsonObject.put("pwd","123456");
-
-        //创建一个Socket，跟服务器的8080端口链接
+        //创建一个Socket，跟服务器链接
         Socket socket = new Socket("192.168.56.1", 54321);
         //使用PrintWriter和BufferedReader进行读写数据
         PrintWriter pw = new PrintWriter(socket.getOutputStream());
