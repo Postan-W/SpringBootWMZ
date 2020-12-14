@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context.xsd"
+       xmlns:context="http://www.springframework.org/schema/context">
+    <context:annotation-config/>
+    <context:annotation-config/>
+    <context:component-scan base-package="com.mingzhu.spring"/>
+    <!--bean就是java对象 , 由Spring创建和管理-->
+    <!--spring首先就根据配置文件生成了每个对象，无论你之后用不用-->
+    <!--
+   id 是bean的标识符,要唯一,如果没有配置id,name就是默认标识符
+   如果配置id,又配置了name,那么name是别名
+   name可以设置多个别名,可以用逗号,分号,空格隔开
+   如果不配置id和name,可以根据applicationContext.getBean(.class)获取对象;
+
+class是bean的全限定名=包名+类名
+例如：
+<bean id="hello" name="hello2 h2,h3;h4" class="com.kuang.pojo.Hello">
+   <property name="name" value="Spring"/>
+</bean>
+-->
+
+
+    <!--
+    可以导入其他的配置文件
+    <import resource="{path}/beans.xml"/>
+    -->
+
+
+    <!--下面这些注入走的是无参构造函数,然后再调用set函数把value值赋给属性name-->
+    <bean id="welcome" class="com.mingzhu.spring.Welcome">
+        <property name="name" value="  Spring"/>
+    </bean>
+    <bean id="knife" class="com.mingzhu.spring.Knife">
+        <property name="name" value="knife"/>
+    </bean>
+
+    <bean id="spoon" class="com.mingzhu.spring.Spoon">
+        <property name="name" value="spoon"/>
+    </bean>
+    <!--bean注入-->
+    <bean id="cook1" class="com.mingzhu.spring.Cook1">
+        <!--name的值是set函数名称后面的部分，首字母小写，ref是引入其他bean-->
+        <property name="cooker" ref="knife"/>
+    </bean>
+    <bean id="axe2" class="com.mingzhu.spring.Axe"/>
+    <bean id="axe" class="com.mingzhu.spring.Axe"/>
+    <bean id="hammer" class="com.mingzhu.spring.Hammer"/>
+    <!--自动装配,如果使用byType需要该类型的对象唯一，不然出错
+       <bean id="operator" class="com.mingzhu.spring.Operator" autowire="byName">
+        <property name="date" value="Friday"/>
+    </bean>
+    -->
+    <!--下面使用注解装配-->
+    <bean id="operator" class="com.mingzhu.spring.Operator"/>
+    <!--
+    数组注入：
+    <bean id="student" class="com.kuang.pojo.Student">
+     <property name="name" value="小明"/>
+     <property name="address" ref="addr"/>
+     数组注入：
+     <property name="books">
+         <array>
+             <value>西游记</value>
+             <value>红楼梦</value>
+             <value>水浒传</value>
+         </array>
+     </property>
+     list注入：
+      <property name="hobbys">
+     <list>
+         <value>听歌</value>
+         <value>看电影</value>
+         <value>爬山</value>
+     </list>
+      </property>
+      map注入:
+       <property name="card">
+     <map>
+         <entry key="中国邮政" value="456456456465456"/>
+         <entry key="建设" value="1456682255511"/>
+     </map>
+     </property>
+     set注入:
+      <property name="games">
+     <set>
+         <value>LOL</value>
+         <value>BOB</value>
+         <value>COC</value>
+     </set>
+ </property>
+    properties注入：
+    <property name="info">
+     <props>
+         <prop key="学号">20190604</prop>
+         <prop key="性别">男</prop>
+         <prop key="姓名">小明</prop>
+     </props>
+    </property>
+    null注入：
+    <property name="wife"><null/></property>
+    </bean>
+    -->
+    <!--
+    无参构造还有一种写法就是P命名空间注入，这种注入也是调用set方法赋值，所以要定set
+    P命名空间注入 : 需要在头文件中加入约束文件
+    导入约束 : xmlns:p="http://www.springframework.org/schema/p"
+    <bean id="user" class="com.kuang.pojo.User" p:name="狂神" p:age="18"/>
+    -->
+
+
+    <!--有参构造函数的时=时候可以用constructor-arg标签，其中name的值可以按参数的位置如0，1，2来表示，也可以直接
+    使用参数名称如length，也可以使用参数类型如Java.lang.String-->
+    <!--这种方式走的是有参构造函数，不调用set-->
+    <bean id="box" class="com.mingzhu.spring.Box">
+        <constructor-arg name="length" value="1"/>
+        <constructor-arg name="heigth" value="2"/>
+        <constructor-arg name="width"  value="3"/>
+        <constructor-arg name="spoon" ref="spoon"/>
+    </bean>
+    <!--
+    有参构造还有一种注入叫C注入
+    c 命名空间注入 : 需要在头文件中加入约束文件
+ 导入约束 : xmlns:c="http://www.springframework.org/schema/c"
+    <bean id="user" class="com.kuang.pojo.User" c:name="狂神" c:age="18"/>
+    -->
+
+
+    <alias name="box" alias="aliasForBox"/>
+</beans>

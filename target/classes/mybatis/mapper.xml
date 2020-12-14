@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingzhu.spring.Mybatis">
+    <resultMap id="clothes" type="com.mingzhu.spring.Clothes">
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="style" jdbcType="VARCHAR" property="style"/>
+        <result column="color" jdbcType="VARCHAR" property="color"/>
+        <result column="size" jdbcType="DOUBLE" property="size"/>
+    </resultMap>
+    <sql id="base_columns">
+        name,style,color,size
+    </sql>
+    <select id="getClothesByName" parameterType="java.lang.String" resultMap="clothes">
+        SELECT
+            <include refid="base_columns"/>
+        FROM clothes
+        where name = #{name,jdbcType=VARCHAR}
+    </select>
+    <insert id="insertIntoClothes" parameterType="com.mingzhu.spring.Clothes">
+        INSERT INTO clothes(name,style,color,size)
+        VALUES
+        (#{name,jdbcType=VARCHAR},#{style,jdbcType=VARCHAR},#{color,jdbcType=VARCHAR},#{size,jdbcType=DOUBLE})
+    </insert>
+
+</mapper>
