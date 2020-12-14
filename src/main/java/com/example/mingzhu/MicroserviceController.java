@@ -1,5 +1,9 @@
 package com.example.mingzhu;
 
+import com.yaml.Person;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,17 +12,31 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("ttt")
+@RequestMapping("/ttt")
+@ConfigurationProperties(prefix = "person2")
 public class MicroserviceController {
-
-    @RequestMapping(value = "/first", method = RequestMethod.GET)
-    public String getCreator(String requestName) {
+    private String personName;
+    private String personAge;
+    @RequestMapping(value = "/argument", method = RequestMethod.GET)
+    public String getArgument(String requestName) {
         return requestName;
     }
-    @RequestMapping(value = "/second", method = RequestMethod.GET)
-    //通过参数获取查询字符串
-    public String getCreato(String requestName) {
-        return requestName;
+
+    @RequestMapping(value = "/personName",method = RequestMethod.GET)
+    public String getPersonName(){
+        return personName;
+    }
+
+    @RequestMapping(value = "/personAge",method = RequestMethod.GET)
+    public String getPersonAge(){
+        return personAge;
+    }
+    public void setPersonName(String personName) {
+        this.personName = personName;
+    }
+
+    public void setPersonAge(String personAge) {
+        this.personAge = personAge;
     }
 
 }
