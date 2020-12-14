@@ -26,8 +26,8 @@ public class MingzhuApplication {
     public static void main(String[] args) throws IOException, JSONException {
 
 
-        SocketToPython socketToPython = new SocketToPython();
-        socketToPython.remoteCall();
+//        SocketToPython socketToPython = new SocketToPython();
+//        socketToPython.remoteCall();
         //这里去找xml配置的bean
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
         //这里找到纯Java配置类
