@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
-        <!--使用它之后，常用的包依赖可以省去 version 标签.版本管理-->
+        <!--使用它之后，常用的包依赖可以省去 version 标签。相当于版本管理-->
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.4.0</version>
         <relativePath/> <!-- lookup parent from repository -->
