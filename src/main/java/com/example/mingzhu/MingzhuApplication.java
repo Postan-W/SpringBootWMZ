@@ -2,6 +2,8 @@ package com.example.mingzhu;
 
 import ch.qos.logback.core.db.dialect.MySQLDialect;
 import com.mingzhu.spring.*;
+import com.yaml.Person;
+import com.yaml.UsePerson;
 import org.json.JSONException;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -25,7 +28,9 @@ public class MingzhuApplication {
     private static Logger log = Logger.getLogger(String.valueOf(MingzhuApplication.class));
     public static void main(String[] args) throws IOException, JSONException {
 
-
+        UsePerson usePerson = new UsePerson();
+        usePerson.OutputDespriction();
+        usePerson.OutputPerson();
 //        SocketToPython socketToPython = new SocketToPython();
 //        socketToPython.remoteCall();
         //这里去找xml配置的bean

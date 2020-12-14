@@ -13,7 +13,7 @@ public class MicroserviceController {
 
     @RequestMapping(value = "/first", method = RequestMethod.GET)
     public String getCreator(String requestName) {
-        return requestName;
+        return requestName + "测试热部署"+"settings-compile-buildatomatically+ctrlshiftalt/";
     }
     @RequestMapping(value = "/second", method = RequestMethod.GET)
     //通过参数获取查询字符串
