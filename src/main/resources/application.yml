@@ -8,7 +8,8 @@ spring:
     url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
 
 person:
-  name: Jack
+  person-name: Jack
+  person-age: 20
 
 description: date is 2020/12/14
-
+name: YALM
