@@ -1,18 +1,10 @@
 package com.example.mingzhu;
 
-import com.yaml.Person;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 @RestController
-@RequestMapping("/ttt")
+@RequestMapping("/main")
 @ConfigurationProperties(prefix = "person2")
 public class MicroserviceController {
     private String personName;
@@ -31,6 +23,7 @@ public class MicroserviceController {
     public String getPersonAge(){
         return personAge;
     }
+
     public void setPersonName(String personName) {
         this.personName = personName;
     }
