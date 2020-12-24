@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@Service
 @RequestMapping("/mybatis")
 public class MybatisController {
     @Autowired
@@ -34,4 +33,5 @@ public class MybatisController {
     public List<Clothes> getClothes(String name,String style){
         return clothesMapper.ByNameAndStyle(name,style);
     }
+
 }

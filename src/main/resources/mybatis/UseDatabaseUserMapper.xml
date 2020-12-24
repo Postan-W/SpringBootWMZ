@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mingzhu.spring.mybatis.UseDatabaseUserMapper">
-    <resultMap id="databaseuser" type="com.mingzhu.spring.DatabaseUser">
+    <!---将实体类与表字段对应起来-->
+    <!--因为在配置文件中，比如本项目的properties文件中定义了type对象的查找路径，所以这里面DatabaseUser前面不写完整的
+    com.mingzhu.spring也行-->
+    <resultMap id="databaseuser" type="DatabaseUser">
         <result column="id" jdbcType="INTEGER" property="id"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
     </resultMap>
     <sql id="base_columns">
-        id,name,password
+        <!--并没有使用id字段，所以select的时候返回id，所以对象的id属性将是默认值，比如0-->
+        name,password
     </sql>
     <select id="getUserByID" parameterType="java.lang.Integer" resultMap="databaseuser">
         SELECT

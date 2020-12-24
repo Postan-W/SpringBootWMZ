@@ -9,6 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
 import static java.lang.System.*;
 
@@ -16,7 +17,8 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 @SpringBootApplication
-@MapperScan("com.mingzhu.spring")//如果不加则默认在当前包内找mapper
+@MapperScan("com.mingzhu.spring")//在当前包下找不到就到com.mingzhu.spring下找mapper
+//@ComponentScan("com.yaml")//在当前包下找不到就到com.yaml下找component
 public class MingzhuApplication {
     private static Logger log = Logger.getLogger(String.valueOf(MingzhuApplication.class));
     public static void main(String[] args) throws IOException, JSONException {
