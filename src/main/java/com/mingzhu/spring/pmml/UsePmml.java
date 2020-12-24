@@ -10,6 +10,7 @@ import javax.xml.bind.JAXBException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Map;
 
 public class UsePmml {
     private Evaluator loadPmml() throws FileNotFoundException, JAXBException, SAXException {
@@ -23,8 +24,15 @@ public class UsePmml {
         InputStream is = inputStream;
         pmml = org.jpmml.model.PMMLUtil.unmarshal(is);
         ModelEvaluatorFactory modelEvaluatorFactory = ModelEvaluatorFactory.newInstance();
+        Evaluator evaluator = modelEvaluatorFactory.newModelEvaluator(pmml);
+        pmml = null;
 
-        return null;
+        return evaluator;
+    }
+
+    private int predict(Evaluator evaluator, Map<String,Double> featuremap){
+        
+        return 0;
     }
 
 }
