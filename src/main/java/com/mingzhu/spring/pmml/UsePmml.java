@@ -31,7 +31,7 @@ public class UsePmml {
     }
 
     private int predict(Evaluator evaluator, Map<String,Double> featuremap){
-        
+
         return 0;
     }
 
