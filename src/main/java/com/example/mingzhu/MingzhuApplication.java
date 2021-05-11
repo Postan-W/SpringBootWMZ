@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 
 import static java.lang.System.*;
 
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.io.IOException;
 import java.util.logging.Logger;
 
@@ -20,7 +22,15 @@ import java.util.logging.Logger;
 @MapperScan("com.mingzhu.spring")//在当前包下找不到就到com.mingzhu.spring下找mapper
 //@ComponentScan("com.yaml")//在当前包下找不到就到com.yaml下找component
 public class MingzhuApplication {
+    //连接MySQL
+    ConnectionToMysql connectionToMysql = new ConnectionToMysql();
+    Statement statement = connectionToMysql.getStatement(connectionToMysql.con_to_mysql());
+
     private static Logger log = Logger.getLogger(String.valueOf(MingzhuApplication.class));
+
+    public MingzhuApplication() throws SQLException {
+    }
+
     public static void main(String[] args) throws IOException, JSONException {
 
 //        SocketToPython socketToPython = new SocketToPython();
